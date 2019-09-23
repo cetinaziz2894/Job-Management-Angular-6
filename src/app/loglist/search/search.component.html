@@ -1,0 +1,195 @@
+<div class="main-panel">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
+      <div class="container-fluid">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                  <button  routerLink="../" type="button" class="btn btn-default pull-right">Back</button>
+          </div>
+      </div>
+  </nav>
+  <!-- End Navbar -->
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12 col-md-12">
+          <div class="card">
+            <div class="card-header card-header-tabs card-header-warning">
+              <div class="nav-tabs-navigation">
+                <div class="nav-tabs-wrapper">
+                  <span class="nav-tabs-title">{{pageName}}:</span>
+                  <ul class="nav nav-tabs" data-tabs="tabs">
+                    <li class="nav-item">
+                      <a class="nav-link active" href="#info" data-toggle="tab" (click)="getInformationLogs(searchInfoUrl)">
+                        <i class="material-icons">info</i> Information
+                        <div class="ripple-container"></div>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#warning" data-toggle="tab" (click)="getWarningLogs(searchWarningUrl)">
+                        <i class="material-icons">warning</i> Warning
+                        <div class="ripple-container"></div>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#error" data-toggle="tab" (click)="getErrosLogs(searchErorUrl)">
+                        <i class="material-icons">error</i> Error
+                        <div class="ripple-container"></div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="tab-content">
+                
+                <div class="tab-pane active" id="info">
+                    <div *ngIf="isInformationEmptyCheck; then checkedInformationTrue else checkedInformationFalse"></div>
+                    <ng-template #checkedInformationTrue>
+                        <table class="table">
+                          <thead>
+                              <th>
+                                  Application
+                              </th>
+                              <th>
+                                  Message
+                              </th>
+                              <th>
+                                  Created Date
+                              </th>
+                          </thead>
+                          <tbody>
+                            <tr  *ngFor="let search of searchInfoResults">
+                                <td>
+                                    {{search.fields.Application}}
+                                </td>
+                                <td>
+                                    {{search.message}}
+                                </td>
+                                <td>
+                                    {{search.timestamp | date:'medium'}}
+                                </td>
+                                <td class="text-primary">
+                                    <a type="button" class="btn btn-warning pull-right" (click)="openDialog(search.fields)" data-toggle="modal" data-target="#fieldsModal">Fields</a>
+                                  </td>
+                                <td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </ng-template>
+                    <ng-template #checkedInformationFalse> 
+                            <div class="alert alert-secondary" role="alert">
+                                There is no content to show. Item detail is empty.
+                            </div>
+                    </ng-template>
+                </div>
+
+                <div class="tab-pane" id="warning">
+                    <div *ngIf="isWarningEmptyCheck; then checkedWarningTrue else checkedWarningFalse"></div>
+                    <ng-template #checkedWarningTrue>
+                        <table class="table">
+                          <thead>
+                              <th>
+                                  Application
+                              </th>
+                              <th>
+                                  Message
+                              </th>
+                              <th>
+                                  Created Date
+                              </th>
+                          </thead>
+                          <tbody>
+                            <tr  *ngFor="let search of searchWarningResults">
+                                <td>
+                                    {{search.fields.Application}}
+                                </td>
+                                <td>
+                                    {{search.message}}
+                                </td>
+                                <td>
+                                    {{search.timestamp | date:'medium'}}
+                                </td>
+                                <td class="text-primary">
+                                    <a type="button" class="btn btn-warning pull-right" (click)="openDialog(search.fields)" data-toggle="modal" data-target="#fieldsModal">Fields</a>
+                                  </td>
+                                <td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </ng-template>
+                    <ng-template #checkedWarningFalse> 
+                            <div class="alert alert-secondary" role="alert">
+                                There is no content to show. Item detail is empty.
+                            </div>
+                    </ng-template>
+                </div>
+
+                <div class="tab-pane" id="error">
+                    <div *ngIf="isErrorEmptyCheck; then checkedErrorTrue else checkedErrorFalse"></div>
+                    <ng-template #checkedErrorTrue>
+                        <table class="table">
+                          <thead>
+                              <th>
+                                  Application
+                              </th>
+                              <th>
+                                  Message
+                              </th>
+                              <th>
+                                  Created Date
+                              </th>
+                          </thead>
+                          <tbody>
+                            <tr  *ngFor="let search of searchErrorResults">
+                                <td>
+                                    {{search.fields.Application}}
+                                </td>
+                                <td>
+                                    {{search.message}}
+                                </td>
+                                <td>
+                                    {{search.timestamp | date:'medium'}}
+                                </td>
+                                <td class="text-primary">
+                                    <a type="button" class="btn btn-warning pull-right" (click)="openDialog(search.fields)" data-toggle="modal" data-target="#fieldsModal">Fields</a>
+                                  </td>
+                                <td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </ng-template>
+                    <ng-template #checkedErrorFalse> 
+                            <div class="alert alert-secondary" role="alert">
+                                There is no content to show. Item detail is empty.
+                            </div>
+                    </ng-template>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="fieldsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Fields</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <ngx-json-viewer [json]="dataDialog" [expanded]="false"></ngx-json-viewer>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

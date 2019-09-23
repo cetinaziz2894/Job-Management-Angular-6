@@ -1,0 +1,89 @@
+<div class="main-panel">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
+        <div class="container-fluid">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <button  routerLink="../../" type="button" class="btn btn-default pull-right">Back</button>
+            </div>
+        </div>
+    </nav>
+    <!-- End Navbar -->
+
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row justify-content-md-center"  *ngIf="loading">
+                        <div class="lds-css ng-scope">
+          <div style="width:100%;height:100%" class="lds-disk"><div><div></div><div></div></div></div>
+        </div>
+            </div>
+            <div class="row" *ngIf="!loading">
+            <div class="col-md-12">
+                <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title ">Accural Schedules</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                    <div *ngIf="checkLength(); then checkedTrue else checkedFalse"></div>
+                    <ng-template #checkedTrue>
+                            <table class="table">
+                                <thead>
+                                    <th>
+                                            Job Name
+                                    </th>
+                                    <th>
+                                            Cron Descriptions
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let history of logHistory">
+                                        <td>
+                                            {{history.jobName}}
+                                        </td>
+                                        <td>
+                                            <span *ngFor="let description of history.cronExpressions">
+                                                <span>{{description.cronDescription | json}} &nbsp;&nbsp;</span>
+                                            </span>
+                                        </td>
+                                        <td>
+                                                <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#triggerModalAccural" (click)="setScheduleName(history.scheduleName)">Trigger</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                    </ng-template>
+                    <ng-template #checkedFalse> 
+                        <div class="alert alert-secondary" role="alert">
+                            There is no content to show. Item detail is empty.
+                        </div>
+                    </ng-template>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="triggerModalAccural" [hidden]="postCallIsSubmitted" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" id="triggerModalBody">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+            Trigger etmek istedinizden emin misiniz?
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary"  (click)="triggerJob(scheduleName)">Trigger</button>
+      </div>
+    </div>
+  </div>
+</div>
+    

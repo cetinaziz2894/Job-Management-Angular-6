@@ -1,0 +1,47 @@
+<div class="main-panel">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
+        <div class="container-fluid">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <button  routerLink="../../" type="button" class="btn btn-default pull-right">Back</button>
+            </div>
+        </div>
+    </nav>
+    <!-- End Navbar -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">CUSTOMER SYNC Trigger</h4>
+                </div>
+                <div class="card-body">
+                <form [formGroup]="runJobForm"  id="fromCustomerTable" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <mat-form-field color="primary">
+                                    <mat-label>Schedule Name</mat-label>
+                                    <mat-select [(value)]="selectedJobname" formControlName="selectedJobname">
+                                        <mat-option   [value]="item.jobName" *ngFor="let item of logHistory" color="primary">{{item.scheduleName}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <mat-checkbox color="primary" formControlName="isDeveloperTest">Is Developer Test</mat-checkbox>
+                            </div>
+                        </div> 
+                    </div>
+                    <button class="btn btn-primary pull-right">Run</button>
+                    <div class="clearfix"></div>
+                    </form>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
