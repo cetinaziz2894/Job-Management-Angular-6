@@ -22,14 +22,14 @@ export class LogsComponent implements OnInit {
 
   ngOnInit() { 
     //this.urlId =window.location.pathname.split("/").pop();
-    this.jobName = this.route.snapshot.paramMap.get("jobname");
-    this.historyId = this.route.snapshot.paramMap.get("id");
+    //this.jobName = this.route.snapshot.paramMap.get("jobname");
+    //this.historyId = this.route.snapshot.paramMap.get("id");
     this.getItemhistory();
   }
 
   getItemhistory(){ 
     this.loading = true; 
-    const url = "http://83.66.131.71:1299/api/logs/jobIds/"+this.historyId;
+    const url = "https://35fa1270-24b7-4f55-9c43-facb202c79c6.mock.pstmn.io/api/itemhistory";
     this.httpClient.get(url).subscribe((res : any[])=>{
         this.itemDetails = res;
         //console.log(this.itemDetails);

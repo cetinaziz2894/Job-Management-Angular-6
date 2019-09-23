@@ -27,9 +27,9 @@ export class SearchComponent implements OnInit {
     this.isWarningEmptyCheck = true;
     this.isErrorEmptyCheck = true;
     this.pageName= "Logs";
-    this.searchInfoUrl = "http://83.66.131.71:1299/api/logs/levels/information";
-    this.searchWarningUrl = "http://83.66.131.71:1299/api/logs/levels/warning";
-    this.searchErorUrl = "http://83.66.131.71:1299/api/logs/levels/error";
+    this.searchInfoUrl = "https://35fa1270-24b7-4f55-9c43-facb202c79c6.mock.pstmn.io/logs/levels/information";
+    this.searchWarningUrl = "https://35fa1270-24b7-4f55-9c43-facb202c79c6.mock.pstmn.io/logs/levels/warning";
+    this.searchErorUrl = "https://35fa1270-24b7-4f55-9c43-facb202c79c6.mock.pstmn.io/logs/levels/error";
     this.getInformationLogs(this.searchInfoUrl);
   }
 

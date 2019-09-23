@@ -16,10 +16,10 @@ export class HistoriesComponent implements OnInit {
   page: {};
   url:string;
   loading: boolean;
-  jobName: string;
+  //jobName: string;
   ngOnInit() {
     //this.urlName = window.location.pathname.split("/").slice(-1)[0];
-    this.jobName = this.route.snapshot.paramMap.get("jobname");
+    //this.jobName = this.route.snapshot.paramMap.get("jobname");
     //console.log(this.jobName);
     this.getPage();
     this.getHistory();
@@ -34,7 +34,7 @@ export class HistoriesComponent implements OnInit {
   }
 
   getPage(){
-    this.url = "http://83.66.131.71:1299/api/jobs/"+this.jobName+"/histories";
+    this.url = "https://35fa1270-24b7-4f55-9c43-facb202c79c6.mock.pstmn.io/api/histories";
     //console.log(this.url);
     //console.log(this.page);
   }

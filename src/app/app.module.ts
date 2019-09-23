@@ -11,15 +11,11 @@ import { MaterialModule } from './material';
 import { HttpClientModule} from '@angular/common/http';
 import { LogsComponent } from './logs/logs.component';
 import { HistoriesComponent } from './histories/histories.component';
-import { AdxModule} from './adx/adx.module';
-import { AccuralModule } from './accural/accural.module';
-import { ReservationModule } from './reservation/reservation.module';
-import { ScreenshotModule } from './screenshot/screenshot.module';
-import { CustomerModule } from './customer/customer.module';
-import { AdunitModule } from './adunit/adunit.module';
 import { LoglistModule } from './loglist/loglist.module';
-import { CampaignModule } from './campaign/campaign.module';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
+import { ExamplemoduleModule } from './examplemodule/examplemodule.module';
+import { ExamplemoduletwoModule } from './exapmleModuleTwo/examplemoduletwo.module';
+import { ExapmleModulethreeModule} from './exapmleModuleThree/exapmlemodulethree.module';
 
 @NgModule({
   declarations: [
@@ -27,24 +23,20 @@ import { NgxJsonViewerModule } from 'ngx-json-viewer';
     JobsComponent,
     NavsidebarComponent,
     LogsComponent,
-    HistoriesComponent
+    HistoriesComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
-    AdxModule,
-    AccuralModule,
-    ReservationModule,
-    ScreenshotModule,
-    CustomerModule,
-    AdunitModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     LoglistModule,
     NgxJsonViewerModule,
-    CampaignModule,
+    ExamplemoduleModule,
+    ExamplemoduletwoModule,
+    ExapmleModulethreeModule,
     RouterModule.forRoot([
       { path: '',
         redirectTo: 'jobs',
@@ -63,32 +55,16 @@ import { NgxJsonViewerModule } from 'ngx-json-viewer';
         component: LogsComponent
       },
       {
-        path: 'jobs/adx',
-        loadChildren: () => import('./adx/adx.module').then(mod => mod.AdxModule)
+        path: 'jobs/example',
+        loadChildren: () => import('./examplemodule/examplemodule.module').then(mod => mod.ExamplemoduleModule)
       },
       {
-        path: 'jobs/accural',
-        loadChildren: () => import('./accural/accural.module').then(mod => mod.AccuralModule)
+        path: 'jobs/exampletwo',
+        loadChildren: () => import('./exapmleModuleTwo/examplemoduletwo.module').then(mod => mod.ExamplemoduletwoModule)
       },
       {
-        path: 'jobs/reservation',
-        loadChildren: () => import('./reservation/reservation.module').then(mod => mod.ReservationModule)
-      },
-      {
-        path: 'jobs/campaign',
-        loadChildren: () => import('./campaign/campaign.module').then(mod => mod.CampaignModule)
-      },
-      {
-        path: 'jobs/screenshot',
-        loadChildren: () => import('./screenshot/screenshot.module').then(mod => mod.ScreenshotModule)
-      },
-      {
-        path: 'jobs/customer',
-        loadChildren: () => import('./customer/customer.module').then(mod => mod.CustomerModule)
-      },
-      {
-        path: 'jobs/adunitsync',
-        loadChildren: () => import('./adunit/adunit.module').then(mod => mod.AdunitModule)
+        path: 'jobs/examplethree',
+        loadChildren: () => import('./exapmleModuleThree/exapmlemodulethree.module').then(mod => mod.ExapmleModulethreeModule)
       },
     ]),
     BrowserAnimationsModule
