@@ -83,7 +83,7 @@ export class TriggerComponent implements OnInit {
       this.runJobForm.value.thisMonthEndDate =this.getEndDate(this.runJobForm.value.thisMonthEndDate);
       this.runJobForm.value.thisMonthStartDate =this.getStartDate(this.runJobForm.value.thisMonthStartDate);
       console.log(this.runJobForm.value);
-      this.httpPostAccuralCall(this.runJobForm.value);
+      this.httpPostJobsCall(this.runJobForm.value);
       //console.log(this.runJobForm);
     }
   }
@@ -108,7 +108,7 @@ export class TriggerComponent implements OnInit {
      return formattedTime;
    }
 
-  httpPostAccuralCall(item){
+   httpPostJobsCall(item){
     this.httpClient.post("https://35fa1270-24b7-4f55-9c43-facb202c79c6.mock.pstmn.io/api/triggers/manuel",
     {
       "scheduleName": item.selectedJobname,

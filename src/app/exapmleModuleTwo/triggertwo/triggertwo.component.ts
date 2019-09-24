@@ -62,7 +62,7 @@ export class TriggertwoComponent implements OnInit {
       this.runJobForm.value.endDate =this.getEndDate(this.runJobForm.value.endDate);
       this.runJobForm.value.startDate =this.getStartDate(this.runJobForm.value.startDate);
       this.runJobForm.value.selectedJobname = this.selectedJobname;
-      this.httpPostADXCall(this.runJobForm.value);
+      this.httpPostJobsCall(this.runJobForm.value);
       console.log(this.runJobForm); 
     }
   }
@@ -88,7 +88,7 @@ export class TriggertwoComponent implements OnInit {
    }
 
 
-  httpPostADXCall(item) {
+   httpPostJobsCall(item) {
     this.urlPage='https://35fa1270-24b7-4f55-9c43-facb202c79c6.mock.pstmn.io/schedules';
     this.httpClient.post("https://35fa1270-24b7-4f55-9c43-facb202c79c6.mock.pstmn.io/api/triggers/manuel",
       {
