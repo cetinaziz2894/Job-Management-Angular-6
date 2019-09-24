@@ -21,7 +21,7 @@ export class GeneraltwoComponent implements OnInit {
       routeHistory:"histories",
       cardClass:"card-header-success",
       cardIconClass:"card-header-light-purple",
-      serviceCallName:"accuraljob",
+      serviceCallName:"jobsjob",
       healthyUrl:"https://35fa1270-24b7-4f55-9c43-facb202c79c6.mock.pstmn.io/healthcheck",
       routeDetailUrl:"https://35fa1270-24b7-4f55-9c43-facb202c79c6.mock.pstmn.io/schedules",
       statisticUrl:"https://35fa1270-24b7-4f55-9c43-facb202c79c6.mock.pstmn.io/statistics",
